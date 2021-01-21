@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../theme.css">
 <template>
   <div class="card" v-if="isExist">
     <h2>{{ task.title }}</h2>
@@ -28,12 +29,13 @@ export default {
     const route = useRoute()
 
     const id = ref(route.params.taskId)
-    const task = reactive(store.getters.task(id.value))
+    const isExist = computed(() => store.getters.tasks[id.value])
+    const task = store.getters.tasks[id.value] || {}
 
     return {
       id,
       task,
-      isExist: computed(() => task),
+      isExist,
       ...mapActions(['updateTaskStatus'])
     }
   }

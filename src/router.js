@@ -10,7 +10,7 @@ export default createRouter({
     {path: '/', component: Tasks},
     {path: '/new', component: New},
     {path: '/task/:taskId', component: Task},
-    {path: '/:any', component: NoPage}
+    {path: '/:notFound(.*)', component: NoPage}
   ],
   linkActiveClass: 'active',
   linkExactActiveClass: 'active'
